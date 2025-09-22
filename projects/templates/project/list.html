@@ -3,11 +3,55 @@
 
 {% block content %}
 <h3>{% trans "My Projects" %}</h3>
+
+<!-- زر إنشاء مشروع جديد -->
+<p>
+  <a href="{% url 'project_create' %}" class="btn btn-primary">
+    {% trans "Create Project" %}
+  </a>
+</p>
+
 <ul>
-    {% for project in object_list %}
-        <li>{{ project.title }} - {{ project.get_status_display }}</li>
-    {% empty %}
-        <li>{% trans "No projects available" %}</li>
-    {% endfor %}
+  {% for project in object_list %}
+    <li>
+      <strong>{{ project.title }}</strong> - {{ project.get_status_display }}
+      <!-- رابط تعديل المشروع -->
+      <a href="{% url 'project_update' project.id %}">Edit</a>
+      <!-- رابط حذف المشروع -->
+      <a href="{% url 'project_delete' project.id %}"
+         onclick="return confirm('{% trans 'Are you sure you want to delete this project?' %}')">
+        Delete
+      </a>
+
+      <!-- نموذج Add Task مباشرةً -->
+      <form method="post" action="{% url 'task_create' project.id %}" style="display:inline;">
+        {% csrf_token %}
+        <input type="text" name="description" placeholder="{% trans 'New task...' %}" required>
+        <button type="submit">{% trans "Add Task" %}</button>
+      </form>
+
+      <!-- قائمة المهام الخاصة بالمشروع -->
+      <ul>
+        {% for task in project.task_set.all %}
+          <li>
+            {{ task.description }}
+            <!-- زر حذف المهمة -->
+            <form method="post" action="{% url 'task_delete' task.id %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" onclick="return confirm('{% trans 'Are you sure you want to delete this task?' %}')">
+                {% trans "Delete" %}
+              </button>
+            </form>
+          </li>
+        {% empty %}
+          <li>{% trans "No tasks yet." %}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% empty %}
+    <li>{% trans "No projects available" %}</li>
+  {% endfor %}
 </ul>
 {% endblock %}
+
+

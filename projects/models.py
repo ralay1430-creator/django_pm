@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings  # الصيغة الصحيحة لاستدعاء موديل المستخدم
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -7,11 +7,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class ProjectStatus(models.IntegerChoices):
     PENDING = 1, "pending"
     COMPLETED = 2, "completed"
     POSTPONED = 3, "postponed"
     CANCELED = 4, "canceled"
+
 
 class Project(models.Model):
     title = models.CharField(max_length=155)
@@ -23,14 +25,11 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        null=True
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title
+
 
 class Task(models.Model):
     description = models.TextField()

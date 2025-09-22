@@ -2,22 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Django Projects Management{% endblock %}</title>
+    <title>{% block title %}Project Management{% endblock %}</title>
 </head>
 <body>
-    <header>
-        <h1>Project Management</h1>
-        <hr>
-    </header>
+<header>
+    <h1>Project Management</h1>
+    <hr>
+</header>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<!-- رسائل التنبيهات -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
 
-    <footer>
-        <hr>
-        <p>&copy; 2025 My Django App</p>
-    </footer>
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <hr>
+    <p>&copy; 2025 My Django App</p>
+</footer>
 </body>
 </html>
