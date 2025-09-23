@@ -1,29 +1,44 @@
 {% load i18n %}
 
-<ul>
+<div class="task-list">
   {% for task in project.task_set.all %}
-    <li>
-      <form method="post" action="{% url 'Task_update' task.id %}">
-        {% csrf_token %}
-        <input 
-          type="checkbox" 
-          name="is_completed"
-          {% if task.is_completed %} checked {% endif %}
-          onchange="this.form.submit()" 
-        />
-        {{ task.description }}
-      </form>
-      <form method="post" action="{% url 'Task_delete' task.id %}">
-        {% csrf_token%}
-        <button type= "submit">Delete</button>
-      </form>
-    </li>
-  {% endfor %}
-</ul>
+    <div class="card mb-2">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <!-- نموذج تحديث حالة المهمة -->
+        <form method="post" action="{% url 'task_update' task.id %}" class="d-flex align-items-center">
+          {% csrf_token %}
+          <input 
+            type="checkbox" 
+            name="is_completed"
+            {% if task.is_completed %} checked {% endif %}
+            onchange="this.form.submit()" 
+            class="form-check-input me-2"
+          />
+          <span>{{ task.description }}</span>
+        </form>
 
-<form method="post" action="{% url 'Task_create' %}">
-  {% csrf_token %}
-  <input type="hidden" value="{{ project.id }}" name="project">
-  <input type="text" name="description" placeholder="{% trans 'New Task' %}" />
-  <input type="submit" value="{% trans 'Add' %}" />
-</form>
+        <!-- نموذج حذف المهمة -->
+        <form method="post" action="{% url 'task_delete' task.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-trash"></i> {% trans "Delete" %}
+          </button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- نموذج إضافة مهمة جديدة -->
+<div class="card mt-3">
+  <div class="card-body">
+    <form method="post" action="{% url 'task_create' project.id %}" class="d-flex">
+      {% csrf_token %}
+      <input type="hidden" value="{{ project.id }}" name="project">
+      <input type="text" name="description" class="form-control me-2" placeholder="{% trans 'New Task' %}" required>
+      <button type="submit" class="btn btn-outline-dark">
+        <i class="bi bi-plus-circle"></i> {% trans "Add" %}
+      </button>
+    </form>
+  </div>
+</div>

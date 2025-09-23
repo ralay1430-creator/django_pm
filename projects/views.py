@@ -1,3 +1,4 @@
+# views.py
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
@@ -7,14 +8,21 @@ from .forms import ProjectCreateForm, TaskForm
 class ProjectListView(ListView):
     model = Project
     template_name = "project/list.html"
+    paginate_by = 6
 
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        where = {}
+        q = self.request.GET.get('q', None)
+        if q:
+            where['title__icontains'] = q
+        return query_set.filter(**where)
 
 class ProjectCreateView(CreateView):
     model = Project
     form_class = ProjectCreateForm
     template_name = "project/create.html"
-    success_url = reverse_lazy("project_list")
-
+    success_url = reverse_lazy("project_list")  # ← الاسم مطابق للـ urls.py
 
 class ProjectUpdateView(UpdateView):
     model = Project
@@ -22,13 +30,12 @@ class ProjectUpdateView(UpdateView):
     template_name = "project/update.html"
 
     def get_success_url(self):
-        return reverse("project_update", args=[self.object.id])
-    
+        return reverse("project_list")  # ← الرجوع لقائمة المشاريع
+
 class ProjectDeleteView(DeleteView):
     model = Project
     template_name = "project/delete.html"
-    success_url = reverse_lazy("project_list")
-
+    success_url = reverse_lazy("project_list")  # ← الاسم مطابق للـ urls.py
 
 class TaskCreateView(CreateView):
     model = Task
@@ -45,15 +52,13 @@ class TaskCreateView(CreateView):
     def get_success_url(self):
         return reverse("project_update", args=[self.object.project.id])
 
-
-class TaskUpdateView(UpdateView):   # <-- تأكد من هذا الاسم في urls.py أيضاً
+class TaskUpdateView(UpdateView):
     model = Task
     fields = ['is_completed']
     http_method_names = ['post']
 
     def get_success_url(self):
         return reverse("project_update", args=[self.object.project.id])
-
 
 class TaskDeleteView(DeleteView):
     model = Task
