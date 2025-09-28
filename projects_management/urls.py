@@ -6,4 +6,7 @@ urlpatterns = [
     path("__debug__/", include(debug_toolbar.urls)),  # ← تم تصحيح path والاستيراد
     path('', include("projects.urls")),
     path('admin/', admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("accounts.urls")), 
+
 ]

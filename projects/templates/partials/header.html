@@ -16,30 +16,56 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
+      <!-- خليتها flex-column عشان العناصر تكون تحت بعض -->
+      <ul class="navbar-nav me-auto flex-column">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'project_list' %}">
             {% trans 'Home' %}
           </a>
         </li>
+
+        <!-- فقط Dropdown باسم المستخدم -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.username }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">{% trans "Profile" %}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item">{% trans 'Logout' %}</button>
+              </form>
+            </li>
+          </ul>
+        </li>
       </ul>
 
-      <!-- نموذج البحث -->
-      <form method="GET" action="{% url 'project_list' %}" class="d-flex">
-        <div class="input-group">
-          <input 
-            type="text"
-            class="form-control"
-            name="q"
-            placeholder="{% trans 'Search' %}"
-            value="{{ request.GET.q }}"
-          />
-          <button class="btn btn-outline-light" type="submit">
-            {% trans 'Search' %}
-          </button>
-        </div>
-      </form>
+      <!-- نموذج البحث يظهر فقط للمستخدمين المسجلين ولا يظهر في صفحة تسجيل الدخول -->
+      {% if user.is_authenticated and request.resolver_match.url_name != 'login' %}
+        <form method="GET" action="{% url 'project_list' %}" class="d-flex">
+          <div class="input-group">
+            <input 
+              type="text"
+              name="q"
+              class="form-control"
+              placeholder="{% trans 'Search' %}"
+              value="{{ request.GET.q }}"
+            />
+            <button class="btn btn-outline-light" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      {% else %}  
+        <a class="btn btn_outline_light" href="{% url 'login' %}">
+          {% trans "Login" %}
+        </a>   
+      {% endif %}
     </div>
   </div>
 </nav>
+</header>
