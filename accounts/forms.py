@@ -34,3 +34,4 @@ class ProfileForm(UserChangeForm):
             'last_name': forms.TextInput(attrs=attrs),
             'email': forms.EmailInput(attrs=attrs),
         }
+        
