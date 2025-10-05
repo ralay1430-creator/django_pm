@@ -1,0 +1,37 @@
+# ملف الترجمة للغة العربية
+# حقوق النشر (C) 2025
+# هذا الملف موزع تحت نفس ترخيص المشروع
+# مترجم: <ضع بريدك الإلكتروني هنا>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MyProject 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-05 17:26+0300\n"
+"PO-Revision-Date: 2025-10-05 18:30+0300\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\accounts\templates\profile.html:9
+msgid "profile"
+msgstr "الملف الشخصي"
+
+#: .\accounts\templates\profile.html:16
+msgid "Save"
+msgstr "حفظ"
+
+#: .\accounts\templates\registration\login.html:9
+#: .\accounts\templates\registration\login.html:16
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\accounts\templates\registration\register.html:9
+#: .\accounts\templates\registration\register.html:16
+msgid "Register"
+msgstr "إنشاء حساب"

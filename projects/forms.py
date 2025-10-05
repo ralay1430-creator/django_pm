@@ -1,5 +1,6 @@
 from django import forms
 from .models import Project, Task
+from django.utils.translation import gettext as _
 
 class ProjectCreateForm(forms.ModelForm):
     class Meta:

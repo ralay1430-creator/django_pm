@@ -1,0 +1,138 @@
+# ملف الترجمة للغة العربية
+# حقوق النشر (C) 2025
+# هذا الملف موزع تحت نفس ترخيص المشروع
+# مترجم: <ضع بريدك الإلكتروني هنا>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Projects Management 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-05 17:26+0300\n"
+"PO-Revision-Date: 2025-10-05 18:40+0300\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+
+#: .\projects\templates\partials\footer.html:5
+msgid "(c) 2021 Hsoub. All rights reserved."
+msgstr "© 2021 حسوب. جميع الحقوق محفوظة."
+
+#: .\projects\templates\partials\header.html:6
+msgid "Projects Management"
+msgstr "إدارة المشاريع"
+
+#: .\projects\templates\partials\header.html:25
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: .\projects\templates\partials\header.html:35
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\projects\templates\partials\header.html:36
+#: .\projects\templates\partials\header.html:41
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\projects\templates\partials\header.html:56
+msgid "Search"
+msgstr "بحث"
+
+#: .\projects\templates\partials\header.html:66
+msgid "Register"
+msgstr "تسجيل جديد"
+
+#: .\projects\templates\partials\header.html:69
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\projects\templates\project\create.html:6
+msgid "Create Project"
+msgstr "إنشاء مشروع"
+
+#: .\projects\templates\project\create.html:12
+msgid "Title"
+msgstr "العنوان"
+
+#: .\projects\templates\project\create.html:17
+msgid "Description"
+msgstr "الوصف"
+
+#: .\projects\templates\project\create.html:22
+msgid "Status"
+msgstr "الحالة"
+
+#: .\projects\templates\project\create.html:27
+msgid "Category"
+msgstr "الفئة"
+
+#: .\projects\templates\project\create.html:33
+#: .\projects\templates\project\update.html:30
+msgid "Save"
+msgstr "حفظ"
+
+#: .\projects\templates\project\create.html:36
+#: .\projects\templates\project\delete.html:15
+msgid "Back to Projects"
+msgstr "الرجوع إلى المشاريع"
+
+#: .\projects\templates\project\delete.html:5
+#: .\projects\templates\project\update.html:40
+msgid "Delete Project"
+msgstr "حذف المشروع"
+
+#: .\projects\templates\project\delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "هل أنت متأكد أنك تريد الحذف؟"
+
+#: .\projects\templates\project\delete.html:11
+msgid "Yes, Delete"
+msgstr "نعم، احذف"
+
+#: .\projects\templates\project\list.html:7
+msgid "My Projects"
+msgstr "مشاريعي"
+
+#: .\projects\templates\project\list.html:10
+msgid "New Project"
+msgstr "مشروع جديد"
+
+#: .\projects\templates\project\list.html:40
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\projects\templates\project\list.html:54
+msgid "No projects yet"
+msgstr "لا توجد مشاريع بعد"
+
+#: .\projects\templates\project\list.html:56
+msgid "Create your first project"
+msgstr "أنشئ مشروعك الأول"
+
+#: .\projects\templates\project\list.html:69
+#: .\projects\templates\project\list.html:74
+msgid "Previous"
+msgstr "السابق"
+
+#: .\projects\templates\project\list.html:87
+#: .\projects\templates\project\list.html:92
+msgid "Next"
+msgstr "التالي"
+
+#: .\projects\templates\project\task.html:24
+msgid "Delete"
+msgstr "حذف"
+
+#: .\projects\templates\project\task.html:38
+msgid "New Task"
+msgstr "مهمة جديدة"
+
+#: .\projects\templates\project\task.html:40
+msgid "Add"
+msgstr "إضافة"
