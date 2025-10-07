@@ -6,6 +6,7 @@ class ProjectCreateForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ["title", "description", "status", "category"]
+        
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter project title"}),
             "description": forms.Textarea(attrs={"class": "form-control", "rows": 3, "placeholder": "Enter project description"}),
