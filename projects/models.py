@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -7,12 +9,16 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
+
 
 class ProjectStatus(models.IntegerChoices):
-    PENDING = 1, "pending"
-    COMPLETED = 2, "completed"
-    POSTPONED = 3, "postponed"
-    CANCELED = 4, "canceled"
+    PENDING = 1, _("pending")
+    COMPLETED = 2, _("completed")
+    POSTPONED = 3, _("postponed")
+    CANCELED = 4, _("canceled")
 
 
 class Project(models.Model):
@@ -37,4 +43,5 @@ class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.description
+        # عرض أول 50 حرف فقط من الوصف
+        return self.description[:50]
